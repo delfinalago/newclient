@@ -17,6 +17,11 @@ const Catalogo = ({}) => {
                 {items.map((item) =>
                     <li key = {item.query}>
                       item : {item.query}
+                      <ul>
+                      {items.elementos.map ((elemento) => 
+                      <li>{elemento.title}</li>
+                      )}
+                      </ul>
                     </li>
                 )}
             </ul>
