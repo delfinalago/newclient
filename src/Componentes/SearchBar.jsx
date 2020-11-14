@@ -55,7 +55,7 @@ const SearchBar = ({search}) => {
         (e) => {
             console.log("value=",value)
             e.preventDefault()
-            dispatch({ type: 'SEARCH', payload : {items: value} })
+            dispatch({ type: 'SEARCH', payload : {query: value} })
             setValue("")
         },
         [setValue, search, value ],

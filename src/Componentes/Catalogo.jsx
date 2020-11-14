@@ -7,14 +7,19 @@ const Catalogo = ({}) => {
     const items = useSelector(state => state.items)
     console.log("state de catalogo =",items)
 
+
+
+
+    
+
     return (
         <div>
             <h1>Catalogo</h1>
 
             <ul>
                 {items.map((item) =>
-                    <li>
-                      item : {item.items}
+                    <li key = {item.query}>
+                      item : {item.query}
                     </li>
                 )}
             </ul>
