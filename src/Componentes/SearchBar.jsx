@@ -16,7 +16,18 @@ const SearchBar = ({search}) => {
             console.log("value=",value)
             e.preventDefault()
             // Aca deberia ir la query al backend 
-            const elementos = [{id:"1", title: "cama" },{id:"2", title: "pelota" }]
+
+            let elementos = [{id:"1", title: "cama" },{id:"2", title: "pelota" }]
+
+            
+            
+            // const userAction = async () => {
+            //     const response = await fetch(`http://localhost:3000/api/search/cama`);
+            //     const myJson = await response.json(); //extract JSON from the http response
+            //     // do something with myJson
+            //     elementos = myJson
+            //   }
+             
             dispatch({ type: 'SEARCH', payload : {query: value, elementos: elementos} })
             setValue("")
         },
