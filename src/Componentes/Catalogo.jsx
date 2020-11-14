@@ -18,8 +18,8 @@ const Catalogo = ({}) => {
                     <li key = {item.query}>
                       item : {item.query}
                       <ul>
-                      {items.elementos.map ((elemento) => 
-                      <li>{elemento.title}</li>
+                      {item.elementos.map ((elemento) => 
+                      <li key = {elemento.id}>{elemento.title}</li>
                       )}
                       </ul>
                     </li>
