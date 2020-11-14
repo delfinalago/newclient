@@ -1,24 +1,45 @@
-import logo from './logo.svg';
+
 import './App.css';
+import {Provider} from "react-redux";
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, compose } from 'redux';
+import SearchBar from './Componentes/SearchBar'
+import Catalogo from './Componentes/Catalogo'
+
+
+const initialValue = { items: [] }
+
+const reducer = (state = initialValue, action) => {
+  switch(action.type){
+    case "SEARCH" : 
+    return { ...state, items: [ ...state.items, action.payload ] }
+     default:
+      return state
+  }
+}
+
+
+const store = createStore(
+    reducer,
+    compose(applyMiddleware(thunk),
+        typeof window === 'object' &&
+            typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ?
+            window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
+    )
+);
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    <Provider store={store}>
+      <div className = "App">
+      <SearchBar/>
+      <Catalogo/>
+      </div>
+    </Provider>
+      
   );
 }
 
