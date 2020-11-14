@@ -7,9 +7,6 @@ const Catalogo = ({}) => {
     const items = useSelector(state => state.items)
     console.log("state de catalogo =",items)
 
-
-
-
     
 
     return (
@@ -23,7 +20,6 @@ const Catalogo = ({}) => {
                     </li>
                 )}
             </ul>
-            {/* { items && items.map(i => {i.items}) } */}
         </div>
     )
 }
