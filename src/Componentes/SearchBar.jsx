@@ -15,7 +15,9 @@ const SearchBar = ({search}) => {
         (e) => {
             console.log("value=",value)
             e.preventDefault()
-            dispatch({ type: 'SEARCH', payload : {query: value} })
+            // Aca deberia ir la query al backend 
+            const elementos = [{id:"1", title: "cama" },{id:"2", title: "pelota" }]
+            dispatch({ type: 'SEARCH', payload : {query: value, elementos: elementos} })
             setValue("")
         },
         [setValue, search, value ],
