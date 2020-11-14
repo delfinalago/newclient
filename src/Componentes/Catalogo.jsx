@@ -5,7 +5,7 @@ import SearchBar from './SearchBar.jsx'
 const Catalogo = ({}) => {
     const dispatch = useDispatch();
     const items = useSelector(state => state.items)
-    console.log("state",items)
+    console.log("state de catalogo =",items)
 
     return (
         <div>
@@ -13,8 +13,9 @@ const Catalogo = ({}) => {
 
             <ul>
                 {items.map((item) =>
-                 <li key={item.id}
-                  value={items} />
+                    <li>
+                      item : {item.items}
+                    </li>
                 )}
             </ul>
             {/* { items && items.map(i => {i.items}) } */}
