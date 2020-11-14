@@ -1,5 +1,5 @@
-import {useState} from 'react' ;
-import {useDispatch} from 'react-redux' ;
+import { useState } from 'react' ;
+import { useDispatch } from 'react-redux' ;
 import { useCallback } from "react";
 
 
@@ -10,6 +10,7 @@ const SearchBar = ({search}) => {
 
     const onSubmit = useCallback(
         (e) => {
+            console.log("value=",value)
             e.preventDefault()
             dispatch({ type: 'SEARCH', payload : {items: value} })
             setValue("")
