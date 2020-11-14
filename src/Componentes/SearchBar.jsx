@@ -7,24 +7,27 @@ import axios from 'axios';
 
 const SearchBar = ({search}) => {
     const [value, setValue] = useState([])
+    // const [query, setQuery] = useState()
+    // const [busqueda, setBusqueda] = useState('')
+
     const dispatch = useDispatch()
 
 
-    useEffect(() => {
-        console.log("useEffect")
+    // useEffect(() => {
+    //     console.log("useEffect")
 
-        const obtenerDatos = async () => {
-        const result = await axios(
-            `http://localhost:3000/api/search/${value}`,
-          );
+    //     const obtenerDatos = async () => {
+    //     const result = await axios(
+    //         `http://localhost:3000/api/search/${busqueda}`,
+    //       );
             
-          console.log("result.data =", result.data)
-          setValue(result.data);
-        }    
+    //       console.log("result.data =", result.data)
+    //       setValue(result.data);
+    //     }    
 
-        obtenerDatos()
+    //     obtenerDatos()
 
-    }, []);
+    // }, [busqueda]);
 
         // const obtenerDatos = async () => {
 
@@ -62,6 +65,7 @@ const SearchBar = ({search}) => {
         <form onSubmit = {onSubmit}>
             <input value={value} onChange={ e => setValue(e.target.value)}></input>
             <button>SEARCH</button>
+            {/* <button type="button" onClick={(e) => setBusqueda(query)} >SEARCH</button> */}
         </form>
     )
 }
