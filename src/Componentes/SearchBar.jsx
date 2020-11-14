@@ -1,12 +1,52 @@
 import { useState } from 'react' ;
 import { useDispatch } from 'react-redux' ;
 import { useCallback } from "react";
+import {useEffect} from 'react' ;
+import axios from 'axios';
 
 
 const SearchBar = ({search}) => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState([])
     const dispatch = useDispatch()
 
+
+    useEffect(() => {
+        console.log("useEffect")
+
+        const obtenerDatos = async () => {
+        const result = await axios(
+            `http://localhost:3000/api/search/${value}`,
+          );
+            
+          console.log("result.data =", result.data)
+          setValue(result.data);
+        }    
+
+        obtenerDatos()
+
+    }, []);
+
+        // const obtenerDatos = async () => {
+
+        //     const data = `http://localhost:3000/api/search/cama`
+  
+        //     //Consultar la URL
+        //     const respuesta = await fetch(data);
+        //     const resultado = await respuesta.json();
+  
+        //     setValue(resultado);
+        //     // setError(false);
+        //     console.log("SETVALUE =", value)
+        //     console.log("resultado =", resultado)
+        //     console.log("Respuesta =", respuesta)
+            
+            
+        // }
+
+        // obtenerDatos()
+     
+
+            
 
     const onSubmit = useCallback(
         (e) => {

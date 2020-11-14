@@ -13,7 +13,7 @@ const Catalogo = ({}) => {
 
             <ul>
                 {items.map((item) =>
-                 <li key={items.id}
+                 <li key={item.id}
                   value={items} />
                 )}
             </ul>
