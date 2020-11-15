@@ -59,8 +59,9 @@ server.get("/search/:q", (req, res) =>{
       
         // console.log("length", body.length)
         // console.log("TIPO", typeof body)
-        // res.send(body);
-        res.send(ArrayFinal)
+
+       var Json = {"hits": ArrayFinal}
+        res.send(Json)
 
         }
     }

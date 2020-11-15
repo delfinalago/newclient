@@ -6,10 +6,25 @@ import axios from 'axios';
 
 
 const SearchBar = ({search}) => {
+
     const [value, setValue] = useState([])
+    const [query, setQuery] = useState();
+    const [data, setData] = useState();
+    const [url, setUrl] = useState( `http://localhost:3000/api/search/${query}`)
+    
     const dispatch = useDispatch()
 
-            
+              useEffect(() => {
+                const fetchData = async () => {
+                  const result = await axios(url);
+             
+                  setData(result.data);
+                  console.log("result.data ? =", result.data)
+                  
+                };
+             
+                fetchData();
+              }, [url]);
 
     const onSubmit = useCallback(
         (e) => {
@@ -19,7 +34,8 @@ const SearchBar = ({search}) => {
 
             let elementos = [{id:"1", title: "cama" },{id:"2", title: "pelota" }]
 
-            
+          
+
             
             // const userAction = async () => {
             //     const response = await fetch(`http://localhost:3000/api/search/cama`);
@@ -37,7 +53,10 @@ const SearchBar = ({search}) => {
     return (
         <form onSubmit = {onSubmit}>
             <input value={value} onChange={ e => setValue(e.target.value)}></input>
-            <button>SEARCH</button>
+            {/* <button>SEARCH</button> */}
+            <button onClick={() =>
+          setUrl(`http://localhost:3000/api/search/${query}`) }
+            > Search</button>
         </form>
     )
 }
