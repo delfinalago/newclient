@@ -5,6 +5,7 @@ import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import SearchBar from './Componentes/SearchBar'
 import Catalogo from './Componentes/Catalogo'
+import React, { Component }  from 'react';
 
 
 const initialValue = { items: [] }

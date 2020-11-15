@@ -1,11 +1,24 @@
 import { useState } from 'react' ;
 import { useDispatch , useSelector } from 'react-redux' ;
 import SearchBar from './SearchBar.jsx'
+import useDataApi from 'use-data-api';
+import React, { Component }  from 'react';
+
 
 const Catalogo = ({}) => {
-    const dispatch = useDispatch();
-    const items = useSelector(state => state.items)
-    console.log("state de catalogo =",items)
+
+     
+
+    // const [data, doFetch] = useDataApi(
+    //     `http://localhost:3000/api/search/zapatillas`,
+    //     { hits: [] },
+    //   );
+
+    //   console.log("CATALOGO DATA =", data)
+
+    // const dispatch = useDispatch();
+    // const items = useSelector(state => state.items)
+    // console.log("state de catalogo =",items)
 
     
 
@@ -13,18 +26,13 @@ const Catalogo = ({}) => {
         <div>
             <h1>Catalogo</h1>
 
-            <ul>
-                {items.map((item) =>
-                    <li key = {item.query}>
-                      item : {item.query}
-                      <ul>
-                      {item.elementos.map ((elemento) => 
-                      <li key = {elemento.id}>{elemento.title}</li>
-                      )}
-                      </ul>
+             {/* <ul>
+                {data.hits.map((item) =>
+                    <li key = {item.id}>
+                      item : {item.title}
                     </li>
                 )}
-            </ul>
+            </ul>  */}
         </div>
     )
 }
