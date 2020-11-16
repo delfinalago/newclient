@@ -5,34 +5,48 @@ import useDataApi from 'use-data-api';
 import React, { Component }  from 'react';
 
 
-const Catalogo = ({}) => {
+const Catalogo = () => {
 
-     
+    
+    
+    const items = useSelector(state => state.items) 
+    console.log("items =" , items)
+    const [query, setQuery] = useState('Ejemplo');
+    const [{ data, isLoading, isError }, doFetch] = useDataApi(
+      `http://localhost:3000/api/search/${query}`,
+      { hits: [] },
+      
+    ); 
 
-    // const [data, doFetch] = useDataApi(
-    //     `http://localhost:3000/api/search/zapatillas`,
-    //     { hits: [] },
-    //   );
-
-    //   console.log("CATALOGO DATA =", data)
+    //   console.log("CATALOGO DATA =", data )
+    //   console.log("CATALOGO DATA HITS=", data.hits )
 
     // const dispatch = useDispatch();
     // const items = useSelector(state => state.items)
     // console.log("state de catalogo =",items)
 
     
+    // items[0].elementos ?  let pepe = items[0] : let pepe.elementos.hits = 
+   
+   
+
 
     return (
         <div>
-            <h1>Catalogo</h1>
+            <h1>Catalogo holaaaaaaaaaaaaa</h1>
+            {isError && <div>Something went wrong ...</div>}
 
-             {/* <ul>
-                {data.hits.map((item) =>
-                    <li key = {item.id}>
-                      item : {item.title}
-                    </li>
-                )}
-            </ul>  */}
+            {isLoading ? (
+            <div>Loading ...</div>
+                ) : (
+             <ul>
+              {items.map(item => (
+             <li key={item.id}>
+             {item.title}
+              </li>
+             ))}
+             </ul>
+)}
         </div>
     )
 }

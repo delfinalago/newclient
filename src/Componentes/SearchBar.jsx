@@ -12,26 +12,36 @@ import useDataApi from 'use-data-api';
 
 
 function SearchBar() {
+
+
+  const dispatch = useDispatch()
+
+  const [items, setGuardarData] = useState()
   const [query, setQuery] = useState('Ejemplo');
   const [{ data, isLoading, isError }, doFetch] = useDataApi(
     `http://localhost:3000/api/search/${query}`,
     { hits: [] },
+    
   );  
 
-  // const [guardarData, setGuardarData] = useState([])
+  // useEffect(() => {
+   
   // setGuardarData(data);
-  // console.log("SetGuardarData =")
+    // console.log("SET GUARDAR DATA=", guardarData )
+  // }, [])
+  
 
     console.log("Que hay en esta data =", data)
   return (
     <Fragment>
       <form
         onSubmit={event => {
+          event.preventDefault();
           doFetch(
             `http://localhost:3000/api/search/${query}`,
           );
-
-          event.preventDefault();
+          dispatch({ type: 'SEARCH', payload : {query: query, elementos: data} })
+          // setGuardarData(data)
         }}
       >
         <input
